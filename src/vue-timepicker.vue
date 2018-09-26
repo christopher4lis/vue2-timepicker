@@ -44,7 +44,7 @@ export default {
     minuteInterval: { type: Number },
     secondInterval: { type: Number },
     id: { type: String },
-    passThruTime: { type: Date }
+    passThruTime: { type: Number }
   },
 
   data() {
