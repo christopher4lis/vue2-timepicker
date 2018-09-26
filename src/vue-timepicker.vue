@@ -11,7 +11,7 @@
         </ul>
         <ul class="minutes">
           <li class="hint" v-text="minuteType"></li>
-          <li v-for="m in minutes" v-text="m" :class="{active: minute === m, inactive: m < new Date().getMinutes() && passThruTime < new Date().getTime()}" @click.stop="select('minute', m)"></li>
+          <li v-for="m in minutes" v-text="m" :class="{active: minute === m, inactive: hour <= new Date().getHours() && m < new Date().getMinutes() && passThruTime < new Date().getTime()}" @click.stop="select('minute', m)"></li>
         </ul>
         <ul class="seconds" v-if="secondType">
           <li class="hint" v-text="secondType"></li>
