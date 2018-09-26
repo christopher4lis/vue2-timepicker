@@ -4,7 +4,7 @@ import VueTimepicker from 'src/vue-timepicker.vue'
 export default {
   name: 'Samples',
   components: { VueTimepicker },
-  data () {
+  data() {
     return {
       yourData: {
         hh: '03',
@@ -14,43 +14,52 @@ export default {
       },
       yourFormat: 'hh:mm:ss a',
       yourDaysArray: [
-        {start_time: {HH: '08', mm: '00'}, end_time: {HH: '09', mm: '00'}},
-        {start_time: {HH: '15', mm: '00'}, end_time: {HH: '', mm: ''}},
-        {start_time: {HH: '', mm: ''}, end_time: {HH: '13', mm: '30'}},
-        {start_time: {HH: '', mm: ''}, end_time: {HH: '', mm: ''}}
+        {
+          start_time: { HH: '08', mm: '00' },
+          end_time: { HH: '09', mm: '00' }
+        },
+        { start_time: { HH: '15', mm: '00' }, end_time: { HH: '', mm: '' } },
+        { start_time: { HH: '', mm: '' }, end_time: { HH: '13', mm: '30' } },
+        { start_time: { HH: '', mm: '' }, end_time: { HH: '', mm: '' } }
       ],
       muteFlowListener: true,
       latestDataFlow: undefined,
-      demoData1: {HH: '08', mm: '30'},
-      demoData2: {HH: '10', mm: '45'},
+      demoData1: { HH: '08', mm: '30' },
+      demoData2: { HH: '10', mm: '45' },
       demoArgs: undefined
     }
   },
   methods: {
-    refreshHighlightNextTick () {
+    refreshHighlightNextTick() {
       const self = this
       this.$nextTick(() => {
         self.refreshAllHighlight()
       })
     },
 
-    refreshAllHighlight () {
-      if (!this.$el) { return }
+    refreshAllHighlight() {
+      if (!this.$el) {
+        return
+      }
       const codeBlocks = this.$el.querySelectorAll('pre code')
-      Array.prototype.forEach.call(codeBlocks, (block) => {
+      Array.prototype.forEach.call(codeBlocks, block => {
         window.hljs.highlightBlock(block)
       })
     },
 
-    changeHandler (eventData) {
-      if (this.muteFlowListener) { return }
+    changeHandler(eventData) {
+      if (this.muteFlowListener) {
+        return
+      }
       this.latestDataFlow = eventData
       this.demoArgs = undefined
       this.refreshHighlightNextTick()
     },
 
-    otherChangeHandler (eventData, arg1, arg2) {
-      if (this.muteFlowListener) { return }
+    otherChangeHandler(eventData, arg1, arg2) {
+      if (this.muteFlowListener) {
+        return
+      }
       this.latestDataFlow = eventData
       this.demoArgs = {
         arg1: arg1,
@@ -59,7 +68,7 @@ export default {
       this.refreshHighlightNextTick()
     }
   },
-  mounted () {
+  mounted() {
     this.refreshHighlightNextTick()
     const self = this
     window.setTimeout(() => {
@@ -86,7 +95,7 @@ export default {
         <pre data-title="HTML"><code class="html">&lt;vue-timepicker&gt;&lt;/vue-timepicker&gt;</code></pre>
       </div>
       <div class="preview">
-        <vue-timepicker></vue-timepicker>
+        <vue-timepicker :passThruTime="90000000"></vue-timepicker>
       </div>
     </div>
 
